@@ -1,12 +1,18 @@
 App2::Application.routes.draw do
-  get "users/show"
-  devise_for :users
+
+  devise_for :users, :controllers => {
+    :registrations => "registrations"
+  }
+  
   resources :users, only: [:show]
   
-  root "static_pages#home"
+  root 'static_pages#home'
+  
   get "/help" => "static_pages#help"
   get "/about" => "static_pages#about"
   get "/contact" => "static_pages#contact"
+
+  get "/users/:id" => "users#show"
 
 
   # The priority is based upon order of creation: first created -> highest priority.
