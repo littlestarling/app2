@@ -4,7 +4,7 @@ App2::Application.routes.draw do
     :registrations => "registrations"
   }
   
-  resources :users, only: [:show, :index]
+  resources :users, only: [:show, :index, :destroy]
 
   root 'static_pages#home'
   
