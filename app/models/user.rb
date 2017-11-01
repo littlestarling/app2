@@ -7,4 +7,8 @@ class User < ActiveRecord::Base
 
   validates :name, presence: true, length: { minimum: 4, maximum: 50}
   
+  def feed
+    Micropost.where("user_id = ?", id)
+  end
+  
 end
