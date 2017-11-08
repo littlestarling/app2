@@ -1,0 +1,34 @@
+<% provide(:title, "Edit micropost") %>
+<h1>Edit micropost</h1>
+
+<%= form_for(resource, as: resource_name, url: edit_micropost_path, html: { method: :put }) do |f| %>
+
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+    
+    <%= render 'shared/error_messages', object: f.object %>
+    
+        <div class="field">
+          <%= f.label :content, class: "control-label" %>
+          <%= f.text_field :content, autofocus: true, class: "form-control" %>
+        </div>
+
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+        <% end %>
+
+  </div>
+</div>
+
+  <div class="row">
+    <div class="col-md-3 col-md-offset-3">
+        <div class="actions">
+          <%= f.submit "Save changes", class: "btn btn-lg btn-primary" %>
+        </div>
+        <br />
+        <%= gravatar_for resource %>
+        <a href="http://gravatar.com/emails">change</a>
+    </div>
+  </div>
+<% end %>
+
