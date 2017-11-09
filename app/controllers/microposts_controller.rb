@@ -20,15 +20,14 @@ class MicropostsController < ApplicationController
   end
   
   def edit
-    @micropost = current_user.microposts.find_by(id: params[:id])
+    @micropost = Micropost.find_by(id: micropost_params[:id])
     render 'microposts/edit'
   end
 
   private
 
     def micropost_params
-      params.require(:micropost).permit(:content)
-      redirect_to root_url if @micropost.nil?
+      params.require(:micropost).permit(:content, :image)
     end
     
     def correct_user
