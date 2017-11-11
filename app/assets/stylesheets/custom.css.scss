@@ -147,9 +147,12 @@ aside {
   }
 }
 
-.gravatar {
+.gravatar, .feed_thumbnail {
   float: left;
   margin-right: 10px;
+  &.feed_thumbnail {
+    width: 50px;
+  }
 }
 
 .stats {
@@ -241,8 +244,13 @@ input {
     .image2 img {
       max-width: 100%;
     }
-    overflow: hidden; /*floatの解除、ここがポイント*/
-    position: relative; /*DWで正常にプレビューできるようになります。←？？？*/
+    &:before, &:after {
+      content: "";
+      display: table;
+    }
+    &:after {
+      clear: both;
+    }
     zoom:1;           /*IE6でレイアウト崩れを防ぐためのものです。*/
   }
 }
@@ -280,7 +288,7 @@ aside {
 
 .text {
   display: block;
-  float: left;
+  margin-left: 70px;
 }
 
 // .clear {
@@ -289,4 +297,5 @@ aside {
 
 .image2 {
   max-width: 400;
+  word-break: break-all;
 }

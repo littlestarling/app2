@@ -2,7 +2,7 @@
 
     <div class="image">
         <% if feed_item.image? %>
-            <%= link_to (image_tag feed_item.image_url, width: 50), feed_item.user  %>
+            <%= link_to (image_tag feed_item.image_url, class: 'feed_thumbnail'), feed_item.user  %>
         <% else %>
             <%= link_to gravatar_for(feed_item.user), feed_item.user %>
         <% end %>

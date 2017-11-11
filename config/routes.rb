@@ -1,5 +1,6 @@
 App2::Application.routes.draw do
 
+
   devise_for :users, :controllers => {
     :registrations => "registrations"
   }
@@ -13,12 +14,13 @@ App2::Application.routes.draw do
 
   resources :microposts, only: [:create, :destroy, :edit]
   resources :relationships, only: [:create, :destroy]
+  resources :contacts, only: [:new, :create]
 
   root 'static_pages#home'
   
   get "/help" => "static_pages#help"
   get "/about" => "static_pages#about"
-  get "/contact" => "static_pages#contact"
+  get "/contact" => "contacts#new"
 
   get "/users/:id" => "users#show"
 
